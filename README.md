@@ -8,7 +8,7 @@ To create an application that an employee can use to generate a random password 
 
 The application runs in the browser and features dynamically updated HTML and CSS powered by JavaScript code. It boasts a clean and polished user interface that is responsive and adapts to multiple screen sizes.
 
-## Deployment
+## Deployed Site
 
 Deployed: https://gemma-wood.github.io/Password-Generator/
 
