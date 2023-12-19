@@ -1,4 +1,5 @@
 // Array of special characters to be included in password
+// Included in starter code
 const specialCharacters = [
   '@',
   '%',
@@ -88,31 +89,78 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-// Function to prompt user for password options
+const charOptions = [];
+
+// Code Created
 function getPasswordOptions() {
+  let passwordLength = parseInt(prompt("Enter the length of the password (between 8 and 128 characters):"));
+  let useLower, useUpper, useNumeric, useSpecial;
 
+  while (true) {
+      while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+          alert("Please enter a valid number between 8 and 128.");
+          passwordLength = parseInt(prompt("Enter the length of the password (between 8 and 128 characters):"));
+      }
+
+      useLower = confirm("Include Lowercase Characters?");
+      useUpper = confirm("Include Uppercase Characters?");
+      useNumeric = confirm("Include Numeric Characters?");
+      useSpecial = confirm("Include Special Characters?");
+
+      if (useLower || useUpper || useNumeric || useSpecial) {
+          const confirmationMessage = `Selected Options:\nPassword Length: ${passwordLength}\nInclude Lowercase: ${useLower}\nInclude Uppercase: ${useUpper}\nInclude Numeric: ${useNumeric}\nInclude Special: ${useSpecial}`;
+
+          if (confirm(confirmationMessage)) {
+              break;
+          } else {
+              passwordLength = parseInt(prompt("Enter the length of the password (between 8 and 128 characters):"));
+              continue;
+          }
+      } else {
+          alert("At least one character set must be selected. Please try again.");
+      }
+  }
+
+  charOptions.length = 0;
+
+  if (useLower) {
+      charOptions.push(...lowerCasedCharacters);
+  }
+  if (useUpper) {
+      charOptions.push(...upperCasedCharacters);
+  }
+  if (useNumeric) {
+      charOptions.push(...numericCharacters);
+  }
+  if (useSpecial) {
+      charOptions.push(...specialCharacters);
+  }
+
+  return { passwordLength, charOptions };
 }
 
-// Function for getting a random element from an array
-function getRandom(arr) {
+function getRandom(arr, length) {
+  let generatedPassword = '';
 
+  for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * arr.length);
+      generatedPassword += arr[randomIndex];
+  }
+
+  return generatedPassword;
 }
 
-// Function to generate password with user input
 function generatePassword() {
-
+  const { passwordLength, charOptions } = getPasswordOptions();
+  return getRandom(charOptions, passwordLength);
 }
 
-// Get references to the #generate element
 const generateBtn = document.querySelector('#generate');
 
-// Write password to the #password input
 function writePassword() {
   const password = generatePassword();
   const passwordText = document.querySelector('#password');
-
   passwordText.value = password;
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
