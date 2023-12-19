@@ -14,6 +14,8 @@ Deployed: https://gemma-wood.github.io/Password-generator/
 
 ## Project Screenshot
 
+<img width="1532" alt="Screenshot 2023-12-19 at 20 45 39" src="https://github.com/Gemma-Wood/Password-Generator/assets/150028191/b9d1343d-5af3-4de2-8946-e69ca936ae03">
+
 
 
 ## License
