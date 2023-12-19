@@ -10,7 +10,7 @@ The application runs in the browser and features dynamically updated HTML and CS
 
 ## Deployment
 
-Deployed: https://gemma-wood.github.io/Password-generator/
+Deployed: https://gemma-wood.github.io/Password-Generator/
 
 ## Project Screenshots
 
